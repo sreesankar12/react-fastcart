@@ -28,10 +28,12 @@ function Login() {
     .catch(e=>{
       console.log(e)
     })
-  
+    
     setAuth(response);
     navigate("/")
-    console.log(response);
+  
+
+    console.log(response.key);
   };
 
   const logout= ()=>{

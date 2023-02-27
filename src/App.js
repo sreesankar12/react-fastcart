@@ -7,6 +7,8 @@ import Login from "./components/Login";
 import Logout from "./components/Logout";
 import Cart from "./components/Cart";
 import Registration from "./components/Registration";
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer} from 'react-notifications';
 
 import { AuthProvider } from "./components/hooks/useAuth";
 
@@ -31,6 +33,7 @@ function App() {
               </Routes>
           </Router>
       </div>
+      <NotificationContainer/>
     </AuthProvider>
   );
 }

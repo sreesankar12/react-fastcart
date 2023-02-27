@@ -5,15 +5,16 @@ import "./components/css/navbar.css"
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
+import { useNavigate } from 'react-router-dom';
 import { useAuth,setAuth } from './components/hooks/useAuth';
 
 
 function ColorSchemesExample() {
-
+  const navigate=useNavigate();
   const {authData,setAuth} =useAuth();
   const logout= ()=>{
     setAuth(null);
+   navigate("/")
   }
   return (
 

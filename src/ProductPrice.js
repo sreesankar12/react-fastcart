@@ -31,18 +31,21 @@ class ProductPrice extends React.Component {
         )
     }
   
-    render() {
+    render()  {
       const { error, isLoaded, price } = this.state;
     //   const { message } = this.props;
-      if (error) {
-        return <div>Error: {error.message}</div>;
-      } else if (!isLoaded) {
-        return <div>Loading...</div>;
-      } else {
-        return (
-            <h4 style={{ marginTop: '-10px' }} className="text-success mt-3">₹ {price.incl_tax}</h4>
-        );
-      }
+      // if (error) {
+      //   return <div>Error: {error.message}</div>;
+      // } else if (!isLoaded) {
+      //   return <div>Loading...</div>;
+      // } else {
+      //   return (
+      //       <h4 style={{ marginTop: '-10px' }} className="text-success mt-3">₹ {price.incl_tax}</h4>
+      //   );
+      // }
+      return(
+      <p> {price.incl_tax} </p>
+     )
     }
   }
 

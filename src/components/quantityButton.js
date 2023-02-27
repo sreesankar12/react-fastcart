@@ -1,42 +1,60 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-function QuantityButton() {
-    const [quantity,setQuantity]=useState(1)
-    const increment = () => {
-        setQuantity(quantity + 1);
-      };
-    
-    const decrement = () => {
+function QuantityButton(props) {
+  const [quantity, setQuantity] = useState(props.quantity);
+
+  const increment = () => {
+    const newQuantity = parseInt(quantity) + 1;
+    setQuantity(newQuantity);
+    console.log(newQuantity,"new quantity");
+
+    props.newQuantity({ quantity: newQuantity });
+  };
+
+  const decrement = () => {
     if (quantity > 1) {
-        setQuantity(quantity - 1);
+      const newQuantity = parseInt(quantity) - 1;
+      setQuantity(newQuantity);
+      console.log(newQuantity,"new quantity");
+      props.newQuantity({ quantity: newQuantity });
     }
+
+  };
+
+  const handleChange =(e) => {
+
+      console.log("hellooo");
+      console.log(e.target.value);
+
     };
 
-    
+
   return (
     <div className='mt-3'>
       <button style={styles.button} onClick={decrement}>-</button>
-      <input style={styles.input} className='text-center ms-1 me-1' type="text" value={quantity} readOnly />
+      <input
+        name='quantity'
+        style={styles.input}
+        className='text-center ms-1 me-1'
+        type="text"
+        value={quantity}
+        onChange={handleChange}
+      />
       <button style={styles.button} onClick={increment}>+</button>
-      
     </div>
-  )
+  );
 }
+
 const styles = {
+  button: {
+    backgroundColor: '#6699ff',
+    borderRadius: '50%',
+    width: '25px',
+    border: 'none',
+  },
+  input: {
+    width: '50px',
+  },
+};
 
-    button:{
-    backgroundColor:"#6699ff",
-    borderRadius:"0%",
-    width:"25px",
-    border:"none",
-    borderRadius:"50%"
-    },
-    input:{
-     
-        width:"50px",
-        
-    }
-
-}
-
-export default QuantityButton
+export default QuantityButton;

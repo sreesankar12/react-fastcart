@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import CartLines from './CartLines';
 import { useAuth } from './hooks/useAuth';
-
+import { Button } from 'react-bootstrap';
 const Cart = () => {
     const [cart, setCart] = useState(null);
     const { authData } = useAuth();
@@ -25,13 +25,15 @@ const Cart = () => {
     }, []);
 
     return (
-        <div className='container w-50 mt-5'>
+        <div className='container w-75 mt-5'>
             <div className="row "  >
-                <div className="col-sm-6 ">
+                <div className=" ">
                     <h1>Cart</h1>
-                     {cart && <h4 className="mt-5 ">{cart.id }</h4> }
                     {cart && <CartLines id={cart.id} />}
-                    <p>Total : { cart && cart.total_incl_tax}</p>
+                    { cart &&<h3 align="right">Total :  {cart.total_incl_tax} </h3>}
+                    <div className='mt-3' align="right">
+                        <Button style={{width:"150px"}} variant="primary">Checkout</Button>
+                    </div>
                 </div>
             </div>   
         </div>

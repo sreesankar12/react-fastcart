@@ -47,8 +47,9 @@ class ProductList extends React.Component {
           <div style={{display: 'flex', flexDirection: 'row'}} className=" m-5">
 
           {products?.map(item => (
-
+            
               <ProductCard key={item.id} item={item} />
+
 
           ))}
           </div>

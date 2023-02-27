@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './css/Registration.css'
 import {useNavigate} from 'react-router-dom';
-
+import { NotificationManager } from 'react-notifications';
 
 function Registration() {
   const [email, setEmail] = useState('');
@@ -11,10 +11,11 @@ function Registration() {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const navigate = useNavigate();
 
+
   const handleRegistration = (e) => {
     e.preventDefault();
     if (password !== passwordConfirmation) {
-      alert('Passwords do not match');
+      NotificationManager.danger("Passwords did'nt match")
       return;
     }
     fetch('http://127.0.0.1:8000/api/register/', {

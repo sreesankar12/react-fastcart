@@ -2,6 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuth } from './hooks/useAuth';
 import ProductDetails from '../ProductDetails';
+import CartLineProduct from './CartLineProduct';
+import { Table } from 'react-bootstrap';
+
 
 const CartLines = (props) => {
     const [cartLines, setCartLines] = useState([]);
@@ -26,17 +29,25 @@ const CartLines = (props) => {
     }, [props.id, authData.key]);
 
     return (
-        <div>
-            <h1>Cart Lines</h1>
-            {cartLines.map((line) => (
-                <div key={line.id}>
-                    <p> Product id: {line.product}</p>
-                    <p>Quantity: {line.quantity} </p>
-                    <p>Price: {line.price_incl_tax}</p>
-                    <hr/>
-                </div>
-                
-            ))}
+        <div>            
+            <div >
+                 <Table striped>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Image</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    {cartLines.map((line) => (
+                         <CartLineProduct api={line.product} line={line} />
+                         ))}
+                    </Table>
+            </div>
+                        
+            
         </div>
     );
 };
