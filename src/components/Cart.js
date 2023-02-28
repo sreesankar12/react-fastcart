@@ -29,7 +29,7 @@ const Cart = () => {
             <div className="row "  >
                 <div className=" ">
                     <h1>Cart</h1>
-                    {cart && <CartLines id={cart.id} />}
+                    {cart && <CartLines key={cart.id} id={cart.id} />}
                     { cart &&<h3 align="right">Total :  {cart.total_incl_tax} </h3>}
                     <div className='mt-3' align="right">
                         <Button style={{width:"150px"}} variant="primary">Checkout</Button>

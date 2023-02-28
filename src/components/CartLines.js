@@ -26,7 +26,7 @@ const CartLines = (props) => {
 
     useEffect(() => {
         getCartLines();
-    }, [props.id, authData.key]);
+    }, [props]);
 
     return (
         <div>            
@@ -38,11 +38,11 @@ const CartLines = (props) => {
                             <th>Image</th>
                             <th>Quantity</th>
                             <th>Price</th>
-                            <th>Total</th>
+                            {/* <th>Total</th> */}
                         </tr>
                     </thead>
                     {cartLines.map((line) => (
-                         <CartLineProduct api={line.product} line={line} />
+                         <CartLineProduct key={line.id} api={line.product} line={line} />
                          ))}
                     </Table>
             </div>

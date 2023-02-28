@@ -5,6 +5,7 @@ import "./css/Login.css"
 import { useAuth } from "./hooks/useAuth";
 
 import { TextField } from "@mui/material";
+import { NotificationManager } from "react-notifications";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -28,9 +29,17 @@ function Login() {
     .catch(e=>{
       console.log(e)
     })
-    
-    setAuth(response);
-    navigate("/")
+    console.log(response)
+    if(response.key){
+      setAuth(response);
+      console.log(" login response",response.key)
+      navigate("/")
+      NotificationManager.success(`Welcome ${response.user.first_name} ${response.user.last_name} `)
+    }
+    else{
+      NotificationManager.error("Invalid Login")
+    }
+
   
 
     console.log(response.key);

@@ -6,7 +6,6 @@ function QuantityButton(props) {
   const increment = () => {
     const newQuantity = parseInt(quantity) + 1;
     setQuantity(newQuantity);
-    console.log(newQuantity,"new quantity");
 
     props.newQuantity({ quantity: newQuantity });
   };
@@ -15,7 +14,6 @@ function QuantityButton(props) {
     if (quantity > 1) {
       const newQuantity = parseInt(quantity) - 1;
       setQuantity(newQuantity);
-      console.log(newQuantity,"new quantity");
       props.newQuantity({ quantity: newQuantity });
     }
 
@@ -23,7 +21,6 @@ function QuantityButton(props) {
 
   const handleChange =(e) => {
 
-      console.log("hellooo");
       console.log(e.target.value);
 
     };
