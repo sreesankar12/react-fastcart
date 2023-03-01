@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 import ColorSchemesExample from "../Nvabar";
 import "./css/Login.css"
 import { useAuth } from "./hooks/useAuth";
@@ -29,10 +29,9 @@ function Login() {
     .catch(e=>{
       console.log(e)
     })
-    console.log(response)
+
     if(response.key){
       setAuth(response);
-      console.log(" login response",response.key)
       navigate("/")
       NotificationManager.success(`Welcome ${response.user.first_name} ${response.user.last_name} `)
     }
@@ -40,9 +39,6 @@ function Login() {
       NotificationManager.error("Invalid Login")
     }
 
-  
-
-    console.log(response.key);
   };
 
   const logout= ()=>{
@@ -69,6 +65,7 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)} variant="outlined" />
                 </div>
                 <button className="mt-4 mb-4" type="submit">Login</button>
+                <Link className="text-center" style={{ textDecoration: 'none', color: 'blue' }} to="/register">New user ? Signup</Link>
               </form>
           : <p> {authData.user.first_name}
           <button onClick={()=>logout()}>Logout</button> </p> }
