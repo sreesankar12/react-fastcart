@@ -6,6 +6,9 @@ import ProductPrice from './ProductPrice';
 import RichText from './components/richTextConverter';
 import Button from 'react-bootstrap/Button';
 import QuantityButton from './components/quantityButton';
+import ProductReviews from './components/productReviews';
+import ReviewForm from './components/ReviewForm';
+
 import { useAuth } from './components/hooks/useAuth';
 import { NotificationManager } from 'react-notifications';
 
@@ -75,9 +78,19 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      <div className="row m-5">
-        <RichText html={product.description} />
+      <div className='' >
+        <h3>Description</h3>
+        <RichText className="mb-5" html={product.description} />
       </div>
+      <br />
+      <h3>Reviews</h3>
+      <hr />
+      {authData ?
+        <ReviewForm />
+        :
+        <div>Login to post Review</div>
+      } 
+      <ProductReviews id={product.id}/>
     </div>
   );
 };

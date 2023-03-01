@@ -98,7 +98,7 @@ function Registration() {
         </div>
         <button type="submit">Register</button>
 
-        <Link className="text-center mt-3" style={{ textDecoration: 'none', color: 'blue' }} to="/login">Already a user ? SignIn</Link>
+        <Link className="text-center mt-3" style={{ textDecoration: 'none', color: 'blue' }} to="/login">Already a user ? Sign in</Link>
 
       </form>
     </div>

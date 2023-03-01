@@ -1,0 +1,20 @@
+.main{
+    margin-bottom: 100px;
+}
+.reviews{
+    
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: rgba(231, 242, 252, 0.856);
+}
+.review-name{
+    font-size: 18px;
+    margin-top: 12px;
+    margin-left: 10px;
+}
+.review-body{
+    margin-top: -12px;
+    margin-left: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
