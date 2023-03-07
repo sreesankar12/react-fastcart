@@ -36,7 +36,7 @@ function Login() {
       NotificationManager.success(`Welcome ${response.user.first_name} ${response.user.last_name} `)
     }
     else{
-      NotificationManager.error("Invalid Login")
+      NotificationManager.error("Invalid Login Credentials")
     }
 
   };

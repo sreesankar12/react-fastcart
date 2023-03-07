@@ -15,7 +15,7 @@ function Registration() {
   const handleRegistration = (e) => {
     e.preventDefault();
     if (password !== passwordConfirmation) {
-      NotificationManager.danger("Passwords did'nt match")
+      NotificationManager.error("Passwords did'nt match")
       return;
     }
     fetch('http://127.0.0.1:8000/api/register/', {

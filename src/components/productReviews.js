@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './css/reviews.css'
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-
+import { Rating } from '@mui/material';
 
 function ProductReviews() {
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const { id } = useParams();
+
+    useEffect(() => {
 
     const getReviews = async () => {
         try {
@@ -25,10 +27,10 @@ function ProductReviews() {
         }
     };
 
-    useEffect(() => {
-        getReviews();
+    
+    getReviews();
         
-    }, []);
+    },[]);
 
     if (loading) {
         return <p>Loading reviews...</p>;
@@ -44,8 +46,16 @@ function ProductReviews() {
             <div className='main'>
             {reviews.map(review => (
                 
-                    <div className='reviews' key={review.id}>
-                        <p className='review-name' key={review.id}> <AccountCircleRoundedIcon  fontSize="small"/> {review.name? review.name:"User"}</p>
+                    <div className='reviews row' key={review.id}>
+
+                        <h6 className='review-name' key={review.id}> <AccountCircleRoundedIcon  fontSize="small"/> {review.name? review.name:`User ${review.id}`}
+                        <span><Rating
+                        name="rating"
+                        value={review.score}
+                        size="medium" 
+                        /></span>
+                        </h6>
+                        <h6 className='review-body mt-1'>{review.title}</h6>
                         <p className='review-body'>{review.body}</p>
                     </div>
                

@@ -10,7 +10,8 @@ function CartLineProduct(props) {
     const [product,setProduct] = useState();
     const [deleted,setDeleted] =useState(false);
     const line =props.line
-      const [quantity, setQuantity] = useState(line.quantity);
+
+    const [quantity, setQuantity] = useState(line.quantity);
 
     const { authData } = useAuth();
 
@@ -31,7 +32,7 @@ function CartLineProduct(props) {
 
         getCartProduct();
 
-    }, [props.api]);
+    }, [deleted]);
 
 
   const getUpdatedCart = async (q) => {
@@ -78,7 +79,7 @@ function CartLineProduct(props) {
         console.log(response.data);
         NotificationManager.warning("Product removed from cart");
         setDeleted(true)
-        console.log(deleted)
+        
       } catch (e) {
         console.log(e);
       }

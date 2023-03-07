@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ImageSlider from './components/imageSLider';
 import ProductPrice from './ProductPrice';
 import RichText from './components/richTextConverter';
@@ -18,6 +18,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const { authData } = useAuth();
   const [quantity, setQuantity] = useState(1);
+  const [reviewPosted, setReviewPosted] = useState(false);
 
   const getSingleProduct = async () => {
     try {
@@ -30,7 +31,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     getSingleProduct();
-  }, []);
+  }, [reviewPosted]);
 
     const getUserCart = async () => {
       try {
@@ -49,6 +50,7 @@ const ProductDetails = () => {
         );
         console.log(response.data);
         NotificationManager.success("Product added to Cart")
+        setReviewPosted(true);
       } catch (e) {
         console.log(e);
       }
@@ -88,9 +90,9 @@ const ProductDetails = () => {
       {authData ?
         <ReviewForm />
         :
-        <div>Login to post Review</div>
+        <div><Link to='/login'>Login</Link> to post Review</div>
       } 
-      <ProductReviews id={product.id}/>
+      <ProductReviews id={product.id} reviewPosted={reviewPosted}/>
     </div>
   );
 };

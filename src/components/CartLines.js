@@ -26,7 +26,7 @@ const CartLines = (props) => {
 
     useEffect(() => {
         getCartLines();
-    }, [props]);
+    }, [props,props.delted]);
 
     return (
         <div>            
