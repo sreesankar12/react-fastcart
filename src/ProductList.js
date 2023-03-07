@@ -52,6 +52,8 @@ class ProductList extends React.Component {
 
 
           ))}
+            <img src="/home/sayone/Documents/learning/broto react/my-app/src/components/images/logo.png" alt="" width="100px" />
+
           </div>
         </div>
         );

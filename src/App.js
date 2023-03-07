@@ -9,7 +9,7 @@ import Cart from "./components/Cart";
 import Registration from "./components/Registration";
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer} from 'react-notifications';
-
+import Profile from "./components/profile";
 import { AuthProvider } from "./components/hooks/useAuth";
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
                       <Route path="/register" element={< Registration/>} />
                       <Route path="/logout" element={< Logout />} />
                       <Route path="/cart" element={< Cart />} />
+                      <Route path="/profile" element={< Profile />} />
 
                 {/* </Switch> */}
               </Routes>
